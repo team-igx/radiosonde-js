@@ -44,7 +44,7 @@ export type StatisticsLog = {
 
 export type RawSimplifiedStatistics = {
   status: ModelState;
-  measuredAt: Date;
+  measuredAt: string;
   latency: number;
   tps: number;
   score: number;
