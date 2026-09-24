@@ -1,0 +1,27 @@
+{
+  "name": "@team-igx/radiosonde-api",
+  "version": "1.0.0",
+  "description": "TypeScript API client for IGX Radiosonde",
+  "type": "module",
+  "main": "./dist/radiosonde.js",
+  "types": "./dist/radiosonde.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/radiosonde.d.ts",
+      "import": "./dist/radiosonde.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test test/radiosonde.test.mjs",
+    "verify": "npm run build && npm test",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm run verify"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
