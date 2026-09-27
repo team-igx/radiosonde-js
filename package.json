@@ -1,10 +1,10 @@
 {
   "name": "@team-igx/radiosonde-api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "TypeScript API client for IGX Radiosonde",
   "type": "module",
-  "main": "./dist/radiosonde.js",
-  "types": "./dist/radiosonde.d.ts",
+  "main": "./dist/radiosonde-api.js",
+  "types": "./dist/radiosonde-api.d.ts",
   "exports": {
     ".": {
       "types": "./dist/radiosonde-api.d.ts",
