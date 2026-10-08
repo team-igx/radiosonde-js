@@ -1,6 +1,6 @@
 {
   "name": "@team-igx/radiosonde-api",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "TypeScript API client for IGX Radiosonde",
   "type": "module",
   "main": "./dist/radiosonde-api.js",
@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "node --test test/radiosonde.test.mjs",
+    "test": "node --test test/radiosonde.test.mjs --test-reporter=spec",
     "verify": "npm run build && npm test",
     "prepack": "npm run build",
     "prepublishOnly": "npm run verify"

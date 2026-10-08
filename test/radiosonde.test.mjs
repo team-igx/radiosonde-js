@@ -22,3 +22,7 @@ test("Listing + Model statistics test", async () => {
 test("Simple statistics test", async () => {
   await RadiosondeApi.simpleStatisticsOf((await RadiosondeApi.listModels())[0]);
 });
+
+test("Bulk statistics test", async (t) => {
+   await RadiosondeApi.bulkSimpleStatisticsOf(await RadiosondeApi.listModels());
+});

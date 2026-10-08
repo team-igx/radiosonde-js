@@ -79,9 +79,24 @@ console.log(statistics);
 반환되는 정보는 IGX Radiosonde 프론트엔드 패널에서 제공되는 데이터와 동일하며, 15분 통계입니다.
 
 ```ts
-const statistics =await RadiosondeApi.simpleStatisticsOf("RS41");
+const statistics = await RadiosondeApi.simpleStatisticsOf("gpt-6-sol");
 
 console.log(statistics);
+```
+
+
+---
+
+### 간략 통계 묶음 조회
+
+특정 모델의 압축된 통계 정보를 조회합니다.
+
+여러개의 모델을 가져와야 할 떄, 한번의 요청으로 모든 데이터를 가져옵니다.
+
+```ts
+const statistics = await RadiosondeApi.bulkSimpleStatisticsOf(["gpt-6-sol", "gpt-6-luna"]);
+
+console.log(Object.fromEntries(statistics));
 ```
 
 ---

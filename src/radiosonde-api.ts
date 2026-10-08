@@ -99,4 +99,34 @@ export class RadiosondeApi {
     }
     throw new Error(`HTTP request failed (${result.status})`);
   }
+
+  /**
+   * Get 15-minute compressed statistics log of models.
+   * Note that score value and model state is not precise value - Just computed from prescribed formula.
+   * @param models Model names to get statistics (Max 20)
+   * @returns Bulk result of Compressed simple statistics of selected model
+   */
+  static async bulkSimpleStatisticsOf(models: string[]): Promise<Map<string, SimplifiedStatistics>> {
+    const result = await fetch(`${BASE_API_URL}/simple/bulk?models=${models.join(",")}`);
+    if (result.ok) {
+      const data = (await result.json()) as RadiosondeResponse<Record<string, RawSimplifiedStatistics>>;
+      if (!data.success) throw new Error(`Radiosonde request failed (${data.message})`);
+      const map = new Map<string, SimplifiedStatistics>();
+      for (const model of models) {
+        if (data.data[model]) {
+          const statistics = data.data[model];
+          map.set(model, {
+            status: ModelState[statistics.status],
+            measuredAt: new Date(statistics.measuredAt),
+            latency: statistics.latency,
+            tps: statistics.tps,
+            score: statistics.score,
+            failureCount: statistics.failureCount,
+          });
+        }
+      }
+      return map;
+    }
+    throw new Error(`HTTP request failed (${result.status})`);
+  }
 }
